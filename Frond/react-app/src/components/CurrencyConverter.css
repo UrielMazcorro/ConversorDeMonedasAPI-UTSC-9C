@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.flag-icon {
+  width: 24px;
+  height: 18px;
+  border-radius: 2px;
+}
