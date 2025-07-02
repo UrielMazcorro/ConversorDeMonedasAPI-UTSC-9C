@@ -5,25 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Conversor de Monedas</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Iconos de banderas -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/css/flag-icons.min.css" integrity="sha512-KV+GaYm6H7CbnmDNEzVZdbckrTr2D9V9YvItY3i0smXG9nOQ5odL4+1XHg3D9pmN8PVtDZ1N+u8j8+dzMF5iqg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
   <div class="container">
     <h1>💱 Conversor de Monedas</h1>
 
+    <!-- Campo de moneda origen -->
     <label for="from">De:</label>
-    <input type="text" id="from" placeholder="Ej: USD">
+    <div class="input-group">
+      <span id="flagFrom" class="fi"></span>
+      <input type="text" id="from" list="monedas" placeholder="Ej: USD">
+    </div>
 
+    <!-- Campo de moneda destino -->
     <label for="to">A:</label>
-    <input type="text" id="to" placeholder="Ej: MXN">
+    <div class="input-group">
+      <span id="flagTo" class="fi"></span>
+      <input type="text" id="to" list="monedas" placeholder="Ej: MXN">
+    </div>
 
+    <!-- Cantidad -->
     <label for="amount">Cantidad:</label>
     <input type="number" id="amount" placeholder="Ej: 100">
 
+    <!-- Botón de conversión -->
     <button id="convertir">Convertir</button>
 
+    <!-- Resultado -->
     <div id="resultado"></div>
   </div>
 
+  <!-- Datalist dinámico -->
+  <datalist id="monedas"></datalist>
+
+  <!-- JS -->
   <script src="app.js"></script>
 </body>
 </html>
