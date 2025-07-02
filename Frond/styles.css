@@ -1,45 +1,121 @@
+/* style.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f1f1f1;
-  padding: 40px;
+  margin: 0;
+  background: #121212;
+  color: #e0e0e0;
+  font-family: 'Roboto', sans-serif;
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .container {
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #ccc;
-  width: 300px;
-}
-
-input, button {
+  background: #1e1e1e;
+  padding: 2.5rem 3rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.7);
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
+  max-width: 400px;
+  text-align: center;
 }
 
-.input-error {
-  border: 2px solid red;
-  background-color: #ffe5e5;
+h1 {
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #00e676;
+}
+
+label {
+  display: block;
+  text-align: left;
+  margin-bottom: 0.3rem;
+  margin-top: 1rem;
+  font-weight: 500;
+  color: #b0b0b0;
 }
 
 .input-group {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
+  background: #2c2c2c;
+  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
+  margin-bottom: 0.8rem;
+  border: 1.5px solid #333;
+  transition: border-color 0.3s ease;
 }
 
-.input-group input {
-  flex: 1;
-  padding: 6px;
+.input-group:focus-within {
+  border-color: #00e676;
 }
 
-.fi {
-  width: 24px;
-  height: 16px;
-  background-size: cover;
-  border-radius: 3px;
+.input-group .fi {
+  font-size: 1.5rem;
+  margin-right: 0.8rem;
+  color: #00e676;
+  min-width: 28px;
+  text-align: center;
+}
+
+/* Aquí está el cambio para inputs blancos con texto negro */
+input[type="text"],
+input[type="number"] {
+  flex-grow: 1;
+  background: #fff;    /* fondo blanco */
+  color: #000;        /* texto negro */
+  font-size: 1rem;
+  padding: 0.5rem 0.5rem;
+  border: none;
+  outline: none;
+  font-weight: 400;
+  border-radius: 5px;
+}
+
+input::placeholder {
+  color: #999;
+}
+
+button#convertir {
+  margin-top: 1.5rem;
+  background: #00e676;
+  border: none;
+  padding: 0.75rem 0;
+  width: 100%;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #121212;
+  cursor: pointer;
+  box-shadow: 0 4px 12px #00e676aa;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+button#convertir:hover {
+  background: #00c95f;
+  box-shadow: 0 6px 18px #00c95faa;
+}
+
+#resultado {
+  margin-top: 1.8rem;
+  font-size: 1.2rem;
+  min-height: 40px;
+  font-weight: 600;
+  color: #00e676;
+}
+
+/* Evitar spinner en input number */
+input[type=number] {
+  appearance: none;
+  -moz-appearance: textfield;
+  -webkit-appearance: none;
+  margin: 0;
 }
