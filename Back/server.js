@@ -1,4 +1,5 @@
 // Importamos las dependencias necesarias
+require('dotenv').config();
 const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
@@ -15,37 +16,32 @@ app.use(express.json());
 
 // Ruta GET para convertir monedas
 app.get("/api/convert", async (req, res) => {
-  // Obtenemos los parámetros 'from', 'to' y 'amount' desde la query string (?from=USD&to=MXN&amount=100)
   const { from, to, amount } = req.query;
 
-  // Validamos que los tres parámetros estén presentes
   if (!from || !to || !amount) {
     return res.status(400).json({ error: "Parámetros incompletos" });
   }
 
   try {
-    // Nueva URL para exchangerate.host sin access_key
-    const url = `https://api.exchangerate.host/convert?from=${from}&to=${to}&amount=${amount}`;
-    
-    // Llamamos a la API externa
+    // Usamos variable de entorno para la URL base
+    const API_URL = process.env.EXCHANGE_API_URL || 'https://api.exchangerate.host';
+    const url = `${API_URL}/convert?from=${from}&to=${to}&amount=${amount}`;
+
     const response = await axios.get(url);
 
-    // Verificamos que exista un resultado válido
     if (!response.data || !response.data.result) {
       return res.status(500).json({ error: "Error en la API externa" });
     }
 
-    // Extraemos resultado, tasa y fecha
     const result = response.data.result;
     const rate = response.data.info.rate;
     const date = response.data.date;
 
-    // Respondemos con los datos de conversión
     res.json({
-      result,           // Total convertido
-      rate,             // Tasa de cambio usada
-      source: from.toUpperCase(), // Moneda origen
-      date              // Fecha de la tasa
+      result,
+      rate,
+      source: from.toUpperCase(),
+      date
     });
 
   } catch (error) {
